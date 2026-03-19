@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Combinações - NIGHTFALL LEGION</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<header>
+    <h1>NIGHTFALL LEGION</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="personagens.html">Personagens</a>
+        <a href="artefatos.html">Artefatos</a>
+        <a href="combinacoes.html" class="active">Combinações</a>
+    </nav>
+</header>
+
+<section>
+    <h3>Combinações</h3>
+    <ul>
+        <li>Combinação de heróis</li>
+        <li>Estratégias poderosas</li>
+        <li>Formações de equipe</li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2026 NIGHTFALL LEGION</p>
+</footer>
+
+<script>
+const navLinks = document.querySelectorAll("nav a");
+const barra = document.createElement("div");
+barra.classList.add("active-bar");
+document.querySelector("nav").appendChild(barra);
+
+function moverBarra(link) {
+    const rect = link.getBoundingClientRect();
+    const navRect = link.parentElement.getBoundingClientRect();
+    barra.style.width = rect.width + "px";
+    barra.style.left = (rect.left - navRect.left) + "px";
+}
+
+navLinks.forEach(link => {
+    link.addEventListener("click", function(e){
+        navLinks.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+        moverBarra(this);
+    });
+});
+
+// Inicializa na aba Combinações
+moverBarra(navLinks[3]);
+</script>
+
+</div>
+</body>
+</html>
