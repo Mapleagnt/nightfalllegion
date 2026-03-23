@@ -44,16 +44,3 @@ input.addEventListener('keypress', (e) => {
 
 // Atualiza automaticamente a cada 2 segundos
 setInterval(atualizarMensagens, 2000);
-function abrirJogo(){
-    const start = Date.now();
-
-    // tenta abrir o app (pode ou não funcionar)
-    window.location.href = "intent://callofdragons#Intent;scheme=callofdragons;package=com.farlightgames.samo.gp;end";
-
-    // fallback pra Play Store
-    setTimeout(() => {
-        if(Date.now() - start < 2500){
-            window.location.href = "https://play.google.com/store/apps/details?id=com.farlightgames.samo.gp";
-        }
-    }, 2000);
-}

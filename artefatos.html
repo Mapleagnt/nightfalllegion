@@ -1,69 +1,253 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Artefatos - NIGHTFALL LEGION</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Artefatos - NIGHTFALL LEGION</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1e1e1e;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    h1, h3 {
+        text-align: center;
+        color: #ffcc66;
+    }
+
+    .artefatos-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .artefato-card {
+        background-color: #8b5e3c;
+        border-radius: 12px;
+        width: 180px;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .artefato-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .artefato-card h4 {
+        margin: 10px 0 5px;
+        font-size: 16px;
+    }
+
+    .artefato-card p {
+        font-size: 13px;
+        color: #f0e6d2;
+        margin: 0;
+    }
+
+    /* Hover animado */
+    .artefato-card:hover img {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+    }
+
+    .artefato-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    .modal-content {
+        background-color: #4d3421;
+        padding: 20px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 800px;
+        display: flex;
+        gap: 20px;
+        color: #fff;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        position: relative;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+
+    .modal-content img {
+        width: 250px;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        cursor: pointer; /* agora clicável para preview */
+    }
+
+    .modal-details {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .modal-details h2 {
+        margin-top: 0;
+        color: #ffcc66;
+    }
+
+    .modal-details p {
+        line-height: 1.4;
+        margin: 5px 0;
+    }
+
+    .close-btn {
+        background-color: #ff4d4d;
+        border: none;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.3s ease;
+    }
+
+    .close-btn:hover {
+        background-color: #ff1a1a;
+    }
+
+    @media (max-width: 768px) {
+        .modal-content {
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-content img {
+            width: 80%;
+            height: auto;
+        }
+    }
+</style>
 </head>
 <body>
 <div class="container">
-
-<header>
     <h1>NIGHTFALL LEGION</h1>
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="personagens.html">Personagens</a>
-        <a href="artefatos.html" class="active">Artefatos</a>
-        <a href="combinacoes.html">Combinações</a>
-    </nav>
-</header>
-
-<section>
     <h3>Artefatos</h3>
-    <p>Explore os artefatos mágicos e itens especiais que aumentam o poder dos heróis.</p>
 
     <div class="artefatos-grid">
-        <div class="artefato-card">
-            <img src="img/artefatos/espada.jpg" alt="Espada Lendária">
-            <h4>Espada Lendária</h4>
+        <div class="artefato-card" id="artefato1">
+            <img src="img/artefatos/artefato11.jpg" alt="Olho da Fênix">
+            <h4>Olho da Fênix</h4>
+            <p>Lendário - +20% Ataque Mágico</p>
         </div>
-        <div class="artefato-card">
-            <img src="img/artefatos/escudo.jpg" alt="Escudo Protetor">
-            <h4>Escudo Protetor</h4>
+        <div class="artefato-card" id="artefato2">
+            <img src="img/artefatos/artefato2.jpg" alt="Cetro do Vento">
+            <h4>Cetro do Vento</h4>
+            <p>Épico - +15% Velocidade</p>
         </div>
-        <!-- mais artefatos -->
     </div>
-</section>
+</div>
 
-<footer>
-    <p>© 2026 NIGHTFALL LEGION</p>
-</footer>
+<!-- Modal Olho da Fênix -->
+<div class="modal" id="modal1">
+    <div class="modal-content">
+        <img src="img/artefatos/artefato1.jpg" alt="Olho da Fênix" id="modal-img1">
+        <div class="modal-details">
+            <h2>Olho da Fênix</h2>
+            <p><strong>Tipo:</strong> Lendário</p>
+            <p><strong>Estilo:</strong> Ataque Mágico</p>
+            <p><strong>Efeito:</strong> Aumenta o ataque mágico da unidade em 20% por 10s.</p>
+            <p><strong>Personagem equipado:</strong> Eliana</p>
+            <p><strong>Preview:</strong> Clique na imagem para trocar</p>
+            <button class="close-btn">Fechar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Cetro do Vento -->
+<div class="modal" id="modal2">
+    <div class="modal-content">
+        <img src="img/artefatos/artefato2.jpg" alt="Cetro do Vento" id="modal-img2">
+        <div class="modal-details">
+            <h2>Cetro do Vento</h2>
+            <p><strong>Tipo:</strong> Épico</p>
+            <p><strong>Estilo:</strong> Velocidade</p>
+            <p><strong>Efeito:</strong> Aumenta a velocidade da unidade em 15% por 8s.</p>
+            <p><strong>Personagem equipado:</strong> Shaksha</p>
+            <p><strong>Preview:</strong> Clique na imagem para trocar</p>
+            <button class="close-btn">Fechar</button>
+        </div>
+    </div>
+</div>
 
 <script>
-const navLinks = document.querySelectorAll("nav a");
-const barra = document.createElement("div");
-barra.classList.add("active-bar");
-document.querySelector("nav").appendChild(barra);
-
-function moverBarra(link) {
-    const rect = link.getBoundingClientRect();
-    const navRect = link.parentElement.getBoundingClientRect();
-    barra.style.width = rect.width + "px";
-    barra.style.left = (rect.left - navRect.left) + "px";
-}
-
-navLinks.forEach(link => {
-    link.addEventListener("click", function(e){
-        navLinks.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
-        moverBarra(this);
+    // Abre modais
+    document.getElementById('artefato1').addEventListener('click', () => {
+        document.getElementById('modal1').style.display = 'flex';
     });
-});
+    document.getElementById('artefato2').addEventListener('click', () => {
+        document.getElementById('modal2').style.display = 'flex';
+    });
 
-// Inicializa na aba Artefatos
-moverBarra(navLinks[2]);
+    // Fecha modais
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.target.closest('.modal').style.display = 'none';
+        });
+    });
+
+    // Fecha ao clicar fora
+    window.addEventListener('click', (e) => {
+        document.querySelectorAll('.modal').forEach(modal => {
+            if(e.target === modal){
+                modal.style.display = 'none';
+            }
+        });
+    });
+
+    // === Preview de foto dentro do modal ===
+    const previewMap = {
+        "modal-img1": ["img/artefatos/artefato1.jpg", "img/artefatos/artefato1-preview.jpg"],
+        "modal-img2": ["img/artefatos/artefato2.jpg", "img/artefatos/artefato2-preview.jpg"]
+    };
+
+    Object.keys(previewMap).forEach(id => {
+        const img = document.getElementById(id);
+        let index = 0;
+        img.addEventListener('click', () => {
+            index = (index + 1) % previewMap[id].length;
+            img.src = previewMap[id][index];
+        });
+    });
 </script>
-
-</div>
 </body>
 </html>
