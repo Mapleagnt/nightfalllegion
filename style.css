@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* FUNDO */
+.bg {
+    position: fixed;
+    inset: 0;
+    background: url("img/bg.jpg") no-repeat center;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* HERO */
+.hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* TEXTO */
+.overlay h1 {
+    font-size: 48px;
+    color: #f5d76e;
+    text-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+.overlay p {
+    margin-top: 10px;
+    color: #ddd;
+}
+
+/* BOTÕES */
+.botoes {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* BOTÕES ESPECÍFICOS */
+.btn-ouro {
+    background: linear-gradient(#f5d76e, #caa43b);
+    color: white;
+}
+
+.btn-azul {
+    background: linear-gradient(#5fa8ff, #2a5fff);
+    color: white;
+    border-radius: 6px;
+    padding: 12px 25px;
+    margin: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-azul:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(95,168,255,0.7);
+}
+
+.server {
+    display: block;
+    margin-top: 10px;
+    color: #ccc;
+}
+
+/* CAIXA PRINCIPAL */
+.box {
+    width: 85%;
+    max-width: 950px;
+    margin: -80px auto 50px;
+    background: rgba(20, 30, 60, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu a {
+    position: relative;
+    color: #f5d76e;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, gold, #00aaff);
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu a.ativo {
+    color: white;
+}
+
+.menu a.ativo::after {
+    width: 100%;
+}
+
+/* TÍTULO */
+.conteudo h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0 30px;
+    color: #f5d76e;
+    font-size: 24px;
+    text-shadow: 0 0 10px rgba(255,215,0,0.6);
+}
+
+.conteudo h2::before,
+.conteudo h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, gold);
+}
+
+.conteudo h2::after {
+    background: linear-gradient(to left, transparent, gold);
+}
+
+/* ===== TOP 3 ESTILO PÓDIO AJUSTADO ===== */
+.top3 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* alinhar pela base do pódio */
+    margin-bottom: 25px;
+    gap: 20px; /* espaçamento entre os cards */
+}
+
+/* CARD BASE */
+.card {
+    padding: 10px;
+    text-align: center;
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 1º LUGAR - central */
+.card:nth-child(1) {
+    border: 2px solid gold;
+    box-shadow: 0 0 25px gold;
+    background: rgba(255,215,0,0.25);
+    font-size: 20px;
+    width: 120px;
+    height: 160px; /* altura maior */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+/* 2º LUGAR - esquerda */
+.card:nth-child(2) {
+    border: 2px solid silver;
+    box-shadow: 0 0 18px silver;
+    background: rgba(192,192,192,0.2);
+    font-size: 18px;
+    width: 100px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* 3º LUGAR - direita */
+.card:nth-child(3) {
+    border: 2px solid #cd7f32;
+    box-shadow: 0 0 18px #cd7f32;
+    background: rgba(205,127,50,0.2);
+    font-size: 18px;
+    width: 100px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* HOVER PARA TODOS OS CARDS */
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255,255,255,0.5);
+}
+
+/* TOP 10 */
+.top10 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.linha:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.linha:nth-child(1) { color: gold; }
+.linha:nth-child(2) { color: #ccc; }
+.linha:nth-child(3) { color: #cd7f32; }
+
+/* SPA */
+.pagina {
+    display: none;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+.conteudo {
+    padding: 20px;
+}
+
+/* ===== ADMIN ===== */
+#loginBox, #painel {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#loginBox input {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+textarea {
+    margin-top: 15px;
+    border-radius: 8px;
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#loginBox button,
+#painel button {
+    background: linear-gradient(#f5d76e, #caa43b);
+}
+
+/* SOCIAL COM IMAGEM */
+.social-box {
+    margin-top: 40px;
+    height: 250px;
+    background: url("img/social-bg.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ESCURECER FUNDO */
+.social-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TEXTO */
+.social-title {
+    font-size: 26px;
+    color: #6ec1ff;
+    text-shadow:
+        0 0 10px rgba(0,150,255,0.9),
+        0 0 25px rgba(0,150,255,0.6);
+    margin-bottom: 25px;
+}
+
+/* ÍCONES */
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons img {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
